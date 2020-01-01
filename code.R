@@ -195,7 +195,7 @@ grade_LR <- glm(dependent_var ~ sex + Medu + Fedu + Mjob + Fjob + reason + paid 
 summary(grade_LR) 
 confint(grade_LR)
 # Observa-se em todos os casos, exceto para a variável goout, que o valor p é superior ao nível de significância e que o intervalo de confiança contém o zero 
-# A hipótese nula conjetura que a distribuição da variável dependente segue as distribuições das variáveis independentes
+# A hipótese nula conjetura que a distribuição da variável dependente segue a distribuição das variáveis independentes
 # Assim, aceitamos a hipótese nula em todos os casos, exceto para a variável goout, que vamos excluir
 
 # Por fim, procedemos à avaliação da regressão logística, que pode ser feita por meio de diferentes metodologias
@@ -219,8 +219,8 @@ R_Cox <- 1 - (exp(LL_null[1])/exp(LL_k[1]))^(2/length(data$dependent_var))
 R_Nag <- R_Cox/(1-(exp(LL_null[1]))^(2/length(data$dependent_var)))
 print(sprintf('R2 Cox = %s',R_Cox))
 print(sprintf('R2 Naguelkerke = %s',R_Nag))
-# Tenha-se em conta a preferência pelo valor do Naguelkerke. Nesse caso, R^2 = 0.255
-# Esse valor indica que o modelo logístico explica 25,5% da variável dependente
+# Tenha-se em conta a preferência pelo valor do Naguelkerke. Nesse caso, R^2 = 0.135
+# Esse valor indica que o modelo logístico explica 13,5% da variável dependente
 
 # 3) 
 prob <- predict(grade_LR, type = c('response'), data)
